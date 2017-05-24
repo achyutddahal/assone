@@ -23,7 +23,7 @@ public class UIConstants {
     public static final int PERFORMANCE_PANEL_HEIGHT = 340;
     public static final int PERFORMANCE_PANEL_WIDTH = 1180;
     //Jrame l Size
-    public static final int JFRAME_HEIGHT = 540;
+    public static final int JFRAME_HEIGHT = 580;
     public static final int JFRAME_WIDTH = 1200;
     //Command Button
     public static final String COMMAND_BUTTON = "Command Button";
@@ -79,5 +79,11 @@ public class UIConstants {
     public static final String ERROR_LABEL = "Error";
     // Info Level
     public static final String INFO_LABEL = "Info";
+    //Admin Name
+    public static final String ADMING_NAME = "Admin Name";
+    // Password Label
+    public static final String PASSWORD = "Password";
+    //Login
+    public static final String LOGIN = "Login";
 
 }

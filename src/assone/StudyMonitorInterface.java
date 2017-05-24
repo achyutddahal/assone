@@ -17,6 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EtchedBorder;
@@ -45,6 +46,13 @@ public class StudyMonitorInterface extends JFrame {
     JTextField studentName;
     JLabel yearLabel;
     JTextField year;
+    
+    
+    JLabel adminNameLabel;
+    JTextField adminName;
+    JLabel passwordLabel;
+    JPasswordField password;
+    JButton loginBtn;
 
     // Text Area to show the messages to the user
     JTextArea gradeContainer;
@@ -100,6 +108,13 @@ public class StudyMonitorInterface extends JFrame {
         studentName = new JTextField(40);
         yearLabel = new JLabel(UIConstants.YEAR);
         year = new JTextField(UIConstants.YEAR_SIZE);
+        
+        //Labels for admin login with admin username, password and the login button
+        adminNameLabel = new JLabel(UIConstants.ADMING_NAME);
+        adminName = new JTextField(25);
+        passwordLabel = new JLabel(UIConstants.PASSWORD);
+        password = new JPasswordField(25);
+        loginBtn = new JButton(UIConstants.LOGIN);
 
         // Event listener for the student name for the student creation validation
         studentName.addKeyListener(new KeyAdapter() {
@@ -135,6 +150,14 @@ public class StudyMonitorInterface extends JFrame {
                 }
             }
         });
+        
+        // Panel for admin login on the system
+        JPanel adminLoginPanel = new JPanel(new FlowLayout());
+        adminLoginPanel.add(adminNameLabel);
+        adminLoginPanel.add(adminName);
+        adminLoginPanel.add(passwordLabel);
+        adminLoginPanel.add(password);
+        adminLoginPanel.add(loginBtn);
 
         // Panel for student name and year
         JPanel studentYearPanel = new JPanel(new FlowLayout());
@@ -155,6 +178,7 @@ public class StudyMonitorInterface extends JFrame {
         achievementLabel = new JLabel(UIConstants.ACHIEVEMENT_LABEL);
         achievementCombo = new JComboBox<String>(GRADES);
 
+        studentDetailsPanel.add(adminLoginPanel, BorderLayout.NORTH);
         studentDetailsPanel.add(studentYearPanel, BorderLayout.CENTER);
         // Panel to keep the subject assessment and achievements
         JPanel subjectAssPanel = new JPanel(new FlowLayout());
@@ -200,6 +224,16 @@ public class StudyMonitorInterface extends JFrame {
 
         // Initially the create student button is not enabled
         createStudentBtn.setEnabled(false);
+        
+        /**
+         * Action listener for the login button
+         * It enables the user to enter the Administrator login details
+         */
+        loginBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {                
+                JOptionPane.showMessageDialog(null, "Admin Name = "+adminName.getText()+" and password = "+password.getText() , "Info", JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
 
         /**
          * Action listener for the create student button It creates a new
